@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Client {
+class Client {
 
     private static final String START_MESSAGE = "Enter an integer: ";
     private static final String REPEAT_MESSAGE = "Continue? Enter another integer: ";
@@ -12,6 +12,20 @@ public class Client {
     private static final String WRONG_INPUT_MESSAGE = "Wrong input, try again: ";
 
     private static Scanner sc = new Scanner(System.in);
+
+    static Set<Integer> primeFactors(long number) {
+        Set<Integer> primefactors = new HashSet<>();
+        long copyOfInput = number;
+
+        for (int i = 2; i <= copyOfInput; i++) {
+            if (copyOfInput % i == 0) {
+                primefactors.add(i); // prime factor
+                copyOfInput /= i;
+                i--;
+            }
+        }
+        return primefactors;
+    }
 
     void run() {
 
@@ -26,19 +40,5 @@ public class Client {
 
         } while (number <= 0);
         System.out.printf(RESULT_MESSAGE, number, primeFactors(number));
-    }
-
-    public static Set primeFactors(long number) {
-        Set primefactors = new HashSet<>();
-        long copyOfInput = number;
-
-        for (int i = 2; i <= copyOfInput; i++) {
-            if (copyOfInput % i == 0) {
-                primefactors.add(i); // prime factor
-                copyOfInput /= i;
-                i--;
-            }
-        }
-        return primefactors;
     }
 }

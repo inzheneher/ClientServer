@@ -8,12 +8,12 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 
 
-public class PrimeFactorTest {
+public class ClientTest {
 
-    private Set list(int... factors){
-        Set listOfFactors = new HashSet();
+    private Set<Integer> list(int... factors) {
+        Set<Integer> listOfFactors = new HashSet<>();
 
-        for(int i : factors){
+        for (int i : factors) {
             listOfFactors.add(i);
         }
         return listOfFactors;
@@ -41,6 +41,6 @@ public class PrimeFactorTest {
 
     @Test
     public void testSeventyTwo() {
-        assertEquals(list(2,3), Client.primeFactors(72));
+        assertEquals(list(2, 3), Client.primeFactors(72));
     }
 }
