@@ -11,7 +11,6 @@ Client-server Java application running at the following scenario:
 5. Client reports the result to the user.
 
 
-
 The application meets the following requirements:
 
 1. The client must be a console application, and use the command line interface.
@@ -22,6 +21,6 @@ The application meets the following requirements:
 
 4. The server must support the simultaneous servicing multiple clients.
 
-5. The source code should have no comments.
+5. The source code should have comments.
 
 6. It is desirable to provide an application unit tests.

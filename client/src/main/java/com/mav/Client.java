@@ -1,5 +1,10 @@
 package com.mav;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.Socket;
 import java.util.Scanner;
 
 class Client {
@@ -9,26 +14,34 @@ class Client {
     private static final String RESULT_MESSAGE = "Prime factors of number '%d' are as follows : %s %n";
     private static final String WRONG_INPUT_MESSAGE = "Wrong input, try again: ";
 
-    private static Scanner sc = new Scanner(System.in);
-    private static LocalPrimeFactorizer localPrimeFactorizer = new LocalPrimeFactorizer();
+    private Socket clientSoket;
+    private BufferedReader input;
+    private PrintStream output;
+    private Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+        Client client = new Client();
+        client.run();
     }
 
+    private void run() {
+        try {
+            clientSoket = new Socket("localhost", 12512);
 
-    void run() {
+            input = new BufferedReader(new InputStreamReader(clientSoket.getInputStream()));
 
-        int number;
-        do {
-            System.out.println(START_MESSAGE);
-            while (!sc.hasNextInt()) {
-                System.out.println(WRONG_INPUT_MESSAGE);
-                sc.next();
+            output = new PrintStream(clientSoket.getOutputStream());
+
+            while (clientSoket.isConnected()){
+                String reply = scanner.nextLine();
+                output.println(reply);
+
+                String message = input.readLine();
+                System.out.println("Server: " + message);
             }
-            number = sc.nextInt();
 
-        } while (number <= 0);
-        System.out.printf(RESULT_MESSAGE, number, localPrimeFactorizer.factorize(number));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

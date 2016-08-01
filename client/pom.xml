@@ -17,11 +17,6 @@
             <artifactId>commons</artifactId>
             <version>1.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.mav</groupId>
-            <artifactId>commons</artifactId>
-            <version>1.0</version>
-        </dependency>
     </dependencies>
 
     <parent>
