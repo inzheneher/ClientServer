@@ -10,9 +10,9 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>src/main/java/com/mav/client</module>
-        <module>src/main/java/com/mav/server</module>
-        <module>src/main/java/com/mav/commons</module>
+        <module>Client</module>
+        <module>Commons</module>
+        <module>Server</module>
     </modules>
 
     <!-- Build Settings -->

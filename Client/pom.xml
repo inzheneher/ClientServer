@@ -3,19 +3,29 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <artifactId>server</artifactId>
+    <artifactId>client</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>server</artifactId>
+            <artifactId>client</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mav</groupId>
+            <artifactId>commons</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mav</groupId>
+            <artifactId>commons</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 
     <parent>
-        <relativePath>../../../../../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
         <groupId>com.mav</groupId>
         <artifactId>prime-factorize</artifactId>
         <version>1.0</version>
@@ -31,7 +41,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.mav.server.Main</mainClass>
+                            <mainClass>com.mav.client.Main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>../сommons-${project.version}.jar</Class-Path>
@@ -43,6 +53,6 @@
     </build>
 
     <!-- More Project Information -->
-    <name>Server</name>
+    <name>Client</name>
 
 </project>

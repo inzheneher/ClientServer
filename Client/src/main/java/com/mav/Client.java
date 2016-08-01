@@ -1,4 +1,4 @@
-
+package com.mav;
 
 import java.util.Scanner;
 

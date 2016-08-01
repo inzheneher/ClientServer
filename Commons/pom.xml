@@ -24,7 +24,7 @@
         <groupId>com.mav</groupId>
         <artifactId>prime-factorize</artifactId>
         <version>1.0</version>
-        <relativePath>../../../../../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <!-- More Project Information -->
