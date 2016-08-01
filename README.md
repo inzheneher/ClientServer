@@ -11,6 +11,7 @@ Client-server Java application running at the following scenario:
 5. Client reports the result to the user.
 
 
+
 The application meets the following requirements:
 
 1. The client must be a console application, and use the command line interface.
