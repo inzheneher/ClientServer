@@ -8,8 +8,8 @@ public class Server {
 
     private ServerSocket serverSocket;
     private Socket acceptSocket;
-    private ObjectOutputStream output;
-    private ObjectInputStream input;
+    private ObjectOutputStream outputStream;
+    private ObjectInputStream inputStream;
     private LocalPrimeFactorizer primeFactorizer;
 
     public static void main(String[] args) {
@@ -25,12 +25,12 @@ public class Server {
                 acceptSocket = serverSocket.accept();
                 primeFactorizer = new LocalPrimeFactorizer();
 
-                output = new ObjectOutputStream(acceptSocket.getOutputStream());
+                outputStream = new ObjectOutputStream(acceptSocket.getOutputStream());
 
-                input = new ObjectInputStream(acceptSocket.getInputStream());
+                inputStream = new ObjectInputStream(acceptSocket.getInputStream());
 
                 while (acceptSocket.isConnected()) {
-                    output.writeObject(primeFactorizer.factorize((Integer) input.readObject()));
+                    outputStream.writeObject(primeFactorizer.factorize((Integer) inputStream.readObject()));
                 }
             } catch (IOException |ClassNotFoundException e) {
                 throw new RuntimeException(e);
