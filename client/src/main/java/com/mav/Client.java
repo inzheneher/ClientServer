@@ -11,7 +11,7 @@ class Client {
 
     public static void main(String[] args) {
 
-        new RemotePrimeFactorizer().run(new Scanner(System.in).nextLine());
+        System.out.println("Server: " + new RemotePrimeFactorizer().factorize(new Scanner(System.in).nextInt()));
 
     }
 }

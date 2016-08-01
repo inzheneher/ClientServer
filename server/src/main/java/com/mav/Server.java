@@ -1,9 +1,6 @@
 package com.mav;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -11,8 +8,8 @@ public class Server {
 
     private ServerSocket serverSocket;
     private Socket acceptSocket;
-    private PrintStream output;
-    private BufferedReader input;
+    private ObjectOutputStream output;
+    private ObjectInputStream input;
     private LocalPrimeFactorizer primeFactorizer;
 
     public static void main(String[] args) {
@@ -20,22 +17,23 @@ public class Server {
         server.run();
     }
 
-    private void run(){
-        try {
-            serverSocket = new ServerSocket(12512);
-            acceptSocket = serverSocket.accept();
-            primeFactorizer = new LocalPrimeFactorizer();
+        private void run(){
 
-            output = new PrintStream(acceptSocket.getOutputStream());
+            try {
 
-            input = new BufferedReader(new InputStreamReader(acceptSocket.getInputStream()));
+                serverSocket = new ServerSocket(12512);
+                acceptSocket = serverSocket.accept();
+                primeFactorizer = new LocalPrimeFactorizer();
 
-            while (acceptSocket.isConnected()) {
-                output.println(primeFactorizer.factorize(Integer.valueOf(input.readLine())));
+                output = new ObjectOutputStream(acceptSocket.getOutputStream());
+
+                input = new ObjectInputStream(acceptSocket.getInputStream());
+
+                while (acceptSocket.isConnected()) {
+                    output.writeObject(primeFactorizer.factorize((Integer) input.readObject()));
+                }
+            } catch (IOException |ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-    }
 }

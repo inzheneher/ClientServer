@@ -1,9 +1,8 @@
 package com.mav;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,43 +10,30 @@ import java.util.Set;
 public class RemotePrimeFactorizer implements PrimeFactorizer {
 
     private Socket clientSoket;
-    private BufferedReader input;
-    private PrintStream output;
+    private ObjectOutputStream outputStream;
+    private ObjectInputStream inputStream;
 
-
-    public void run(String reply) {
+    public RemotePrimeFactorizer() {
         try {
             clientSoket = new Socket("localhost", 12512);
 
-            input = new BufferedReader(new InputStreamReader(clientSoket.getInputStream()));
+            outputStream = new ObjectOutputStream(clientSoket.getOutputStream());
 
-            output = new PrintStream(clientSoket.getOutputStream());
-
-            while (clientSoket.isConnected()){
-
-                output.println(reply);
-
-                String message = input.readLine();
-                System.out.println("Server: " + message);
-            }
+            inputStream = new ObjectInputStream(clientSoket.getInputStream());
 
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     public Set<Integer> factorize(Integer numberToFactorize) {
-        Set<Integer> primefactors = new HashSet<>();
-        long copyOfInput = numberToFactorize;
 
-        for (int i = 2; i <= copyOfInput; i++) {
-            if (copyOfInput % i == 0) {
-                primefactors.add(i);
-                copyOfInput /= i;
-                i--;
-            }
+        try {
+            outputStream.writeObject(numberToFactorize);
+            return (HashSet<Integer>) inputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-        return primefactors;
     }
 }
