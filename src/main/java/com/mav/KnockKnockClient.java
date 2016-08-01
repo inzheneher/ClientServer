@@ -20,11 +20,11 @@ public class KnockKnockClient {
             in = new BufferedReader(new InputStreamReader(kkSocket
                     .getInputStream()));
         } catch (UnknownHostException e) {
-            System.err.println("Don't know about host: taranis.");
+            System.err.println("Don't know about host: laptop.");
             System.exit(1);
         } catch (IOException e) {
             System.err
-                    .println("Couldn't get I/O for the connection to: taranis.");
+                    .println("Couldn't get I/O for the connection to: laptop.");
             System.exit(1);
         }
 
@@ -34,13 +34,13 @@ public class KnockKnockClient {
         String fromUser;
 
         while ((fromServer = in.readLine()) != null) {
-            System.out.println("Server: " + fromServer);
+            System.out.println("server: " + fromServer);
             if (fromServer.equals("Bye."))
                 break;
 
             fromUser = stdIn.readLine();
             if (fromUser != null) {
-                System.out.println("Client: " + fromUser);
+                System.out.println("client: " + fromUser);
                 out.println(fromUser);
             }
         }

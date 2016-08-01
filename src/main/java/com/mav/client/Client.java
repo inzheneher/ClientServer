@@ -1,8 +1,6 @@
-package com.mav;
 
-import java.util.HashSet;
+
 import java.util.Scanner;
-import java.util.Set;
 
 class Client {
 
@@ -12,20 +10,12 @@ class Client {
     private static final String WRONG_INPUT_MESSAGE = "Wrong input, try again: ";
 
     private static Scanner sc = new Scanner(System.in);
+    private static LocalPrimeFactorizer localPrimeFactorizer = new LocalPrimeFactorizer();
 
-    static Set<Integer> primeFactors(long number) {
-        Set<Integer> primefactors = new HashSet<>();
-        long copyOfInput = number;
+    public static void main(String[] args) {
 
-        for (int i = 2; i <= copyOfInput; i++) {
-            if (copyOfInput % i == 0) {
-                primefactors.add(i); // prime factor
-                copyOfInput /= i;
-                i--;
-            }
-        }
-        return primefactors;
     }
+
 
     void run() {
 
@@ -39,6 +29,6 @@ class Client {
             number = sc.nextInt();
 
         } while (number <= 0);
-        System.out.printf(RESULT_MESSAGE, number, primeFactors(number));
+        System.out.printf(RESULT_MESSAGE, number, localPrimeFactorizer.factorize(number));
     }
 }

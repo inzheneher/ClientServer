@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- The Basics -->
+    <artifactId>client</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mav</groupId>
+            <artifactId>commons</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
+    <parent>
+        <relativePath>../../../../../../pom.xml</relativePath>
+        <groupId>com.mav</groupId>
+        <artifactId>prime-factorize</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <!-- Build Settings -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.mav.client.Main</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>../сommons-${project.version}.jar</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- More Project Information -->
+    <name>Client</name>
+
+</project>

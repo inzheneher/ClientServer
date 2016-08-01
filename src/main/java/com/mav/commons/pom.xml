@@ -5,19 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <groupId>com.mav</groupId>
-    <artifactId>prime-factorize</artifactId>
-    <version>1.0</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>src/main/java/com/mav/client</module>
-        <module>src/main/java/com/mav/server</module>
-        <module>src/main/java/com/mav/commons</module>
-    </modules>
-
-    <!-- Build Settings -->
+    <artifactId>commons</artifactId>
+    <packaging>jar</packaging>
     <build>
-        <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -30,7 +20,14 @@
         </plugins>
     </build>
 
+    <parent>
+        <groupId>com.mav</groupId>
+        <artifactId>prime-factorize</artifactId>
+        <version>1.0</version>
+        <relativePath>../../../../../../pom.xml</relativePath>
+    </parent>
+
     <!-- More Project Information -->
-    <name>Client Server Prime Factorizer</name>
+    <name>Common classes for client and server</name>
 
 </project>
