@@ -21,18 +21,13 @@ public class LocalPrimeFactorizerTest {
     }
 
     @Test
-    public void testOne() {
+    public void factorizeOne() {
         assertEquals(list(), primeFactorizer.factorize(1));
     }
 
     @Test
-    public void testTwo() {
+    public void testFactorizationForSingleFactor() {
         assertEquals(list(2), primeFactorizer.factorize(2));
-    }
-
-    @Test
-    public void testThree() {
-        assertEquals(list(3), primeFactorizer.factorize(3));
     }
 
     @Test
@@ -41,7 +36,10 @@ public class LocalPrimeFactorizerTest {
     }
 
     @Test
-    public void testSeventyTwo() {
+    public void factorizeToTwoMultiplierWithDuplications() {
         assertEquals(list(2,3), primeFactorizer.factorize(72));
     }
+
+    @Test
+    public void factorizeToTwoMultipliersWithNoDuplications() { assertEquals(list(2,3), primeFactorizer.factorize(6)); }
 }

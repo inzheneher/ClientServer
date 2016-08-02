@@ -5,15 +5,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-class MultiServer extends Thread {
+class Worker extends Thread {
 
     private Socket acceptSocket;
     private ObjectOutputStream outputStream;
     private ObjectInputStream inputStream;
     private LocalPrimeFactorizer primeFactorizer;
 
-    MultiServer(Socket acceptSocket) {
-        super("MultiServer");
+    Worker(Socket acceptSocket) {
+        super("Worker");
         this.acceptSocket = acceptSocket;
     }
 

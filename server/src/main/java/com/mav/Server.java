@@ -18,7 +18,7 @@ public class Server {
 
         while (listening) {
             try {
-                new MultiServer(serverSocket.accept()).start();
+                new Worker(serverSocket.accept()).start();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
