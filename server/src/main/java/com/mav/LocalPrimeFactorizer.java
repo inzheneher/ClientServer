@@ -3,7 +3,7 @@ package com.mav;
 import java.util.HashSet;
 import java.util.Set;
 
-class LocalPrimeFactorizer implements PrimeFactorizer{
+class LocalPrimeFactorizer implements PrimeFactorizer {
 
     @Override
     public Set<Integer> factorize(Integer numberToFactorize) {

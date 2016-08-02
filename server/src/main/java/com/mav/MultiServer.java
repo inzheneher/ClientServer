@@ -17,7 +17,7 @@ class MultiServer extends Thread {
         this.acceptSocket = acceptSocket;
     }
 
-    public void run(){
+    public void run() {
 
         try {
 
@@ -30,7 +30,7 @@ class MultiServer extends Thread {
             while (acceptSocket.isConnected()) {
                 outputStream.writeObject(primeFactorizer.factorize((Integer) inputStream.readObject()));
             }
-        } catch (IOException |ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
