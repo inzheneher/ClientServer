@@ -7,13 +7,13 @@ import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RemotePrimeFactorizer implements PrimeFactorizer {
+class RemotePrimeFactorizer implements PrimeFactorizer {
 
     private Socket clientSoket;
     private ObjectOutputStream outputStream;
     private ObjectInputStream inputStream;
 
-    public RemotePrimeFactorizer() {
+    RemotePrimeFactorizer() {
         try {
             clientSoket = new Socket("localhost", 12512);
 
