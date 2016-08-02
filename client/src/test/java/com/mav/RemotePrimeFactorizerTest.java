@@ -31,7 +31,7 @@ public class RemotePrimeFactorizerTest {
     }
 
     @Test
-    public void testFour() {
+    public void factorizeToSingleMutiplierWithDuplications() {
         assertEquals(list(2), primeFactorizer.factorize(4));
     }
 

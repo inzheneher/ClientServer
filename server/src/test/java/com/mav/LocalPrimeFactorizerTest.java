@@ -31,7 +31,7 @@ public class LocalPrimeFactorizerTest {
     }
 
     @Test
-    public void testFour() {
+    public void factorizeToSingleMutiplierWithDuplication() {
         assertEquals(list(2), primeFactorizer.factorize(4));
     }
 
