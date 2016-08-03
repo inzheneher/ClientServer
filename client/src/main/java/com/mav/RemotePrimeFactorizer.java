@@ -1,3 +1,8 @@
+/**
+ * This class is responsible for sending getting number
+ * to the server.
+ */
+
 package com.mav;
 
 import java.io.IOException;

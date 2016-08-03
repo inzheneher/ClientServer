@@ -1,3 +1,9 @@
+/**
+ * This is the entry point for server side.
+ * This class is responsible for establishing connection
+ * between server and client and launching instance of Worker.
+ */
+
 package com.mav;
 
 import java.io.IOException;
@@ -8,7 +14,7 @@ public class Server {
     public static void main(String[] args) {
 
         boolean listening = true;
-        ServerSocket serverSocket;
+        ServerSocket serverSocket = null;
 
         try {
             serverSocket = new ServerSocket(12512);

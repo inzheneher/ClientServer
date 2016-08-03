@@ -1,3 +1,8 @@
+/**
+ * This class is responsible for a calculation of prime factor
+ * for getting number on the server side.
+ */
+
 package com.mav;
 
 import java.util.HashSet;
